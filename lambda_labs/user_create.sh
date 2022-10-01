@@ -64,3 +64,10 @@ su -l "$username" -c "pyenv global $pythonver"
 
 # Upgrade pip to the latest version
 su -l "$username" -c "pip install --upgrade pip"
+
+##
+# Install Poetry
+#
+
+## Run the bootstrap script
+su -l "$username" -c "curl -sSL https://install.python-poetry.org | python3 -"
