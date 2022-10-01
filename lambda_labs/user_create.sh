@@ -61,3 +61,6 @@ END
 # Build recent python and make it the global interpreter
 su -l "$username" -c "pyenv install $pythonver"
 su -l "$username" -c "pyenv global $pythonver"
+
+# Upgrade pip to the latest version
+su -l "$username" -c "pip install --upgrade pip"
