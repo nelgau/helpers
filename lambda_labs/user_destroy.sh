@@ -4,7 +4,7 @@ set -euxo pipefail
 username=nelgau
 
 # Remove passwordless sudo privileges
-rm "/etc/sudoers.d/$username"
+rm -f "/etc/sudoers.d/$username"
 
 # Terminate all running processes
 killall -9 --wait --quiet --user "$username" || true
