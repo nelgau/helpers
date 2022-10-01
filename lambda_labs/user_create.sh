@@ -71,3 +71,10 @@ su -l "$username" -c "pip install --upgrade pip"
 
 ## Run the bootstrap script
 su -l "$username" -c "curl -sSL https://install.python-poetry.org | python3 -"
+
+##
+# Install Pipenv
+#
+
+# Use pip to install the pipenv package
+su -l "$username" -c "pip install pipenv"
