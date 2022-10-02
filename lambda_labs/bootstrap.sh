@@ -9,4 +9,4 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 rm -rf helpers
 git clone git@github.com:nelgau/helpers.git
 
-sudo helpers/lambda_labs/user_create.sh
+sudo helpers/lambda_labs/user-create.sh
