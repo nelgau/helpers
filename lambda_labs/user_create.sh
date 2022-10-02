@@ -56,6 +56,7 @@ su -l "$username" -c "curl https://pyenv.run | bash"
 # Append shell configuration to .bashrc
 cat >> "$userhome/.bashrc" <<"END"
 
+# Enable Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -65,6 +66,7 @@ END
 # Append shell configuration to .profile
 cat >> "$userhome/.profile" <<"END"
 
+# Enable Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -83,6 +85,13 @@ su -l "$username" -c "pip install --upgrade pip"
 
 ## Run the bootstrap script
 su -l "$username" -c "curl -sSL https://install.python-poetry.org | python3 -"
+
+# Workaround keyring issue by specifying a null backend
+cat >> "$userhome/.bashrc" <<"END"
+
+# Workaround keyring issue https://github.com/python-poetry/poetry/issues/1917
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+END
 
 ##
 # Install Pipenv
