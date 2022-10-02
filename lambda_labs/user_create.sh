@@ -1,9 +1,23 @@
 #!/bin/bash
 set -euxo pipefail
 
+##
+# Config
+#
+
 username=nelgau
 usershell=/bin/bash
+pythonver=3.10.6
+
+##
+# Variables
+#
+
 userhome="/home/$username"
+
+##
+# Pre-fight checks
+#
 
 if id "$username" &>/dev/null; then
     echo "User $username already exists."
@@ -16,7 +30,7 @@ if [ -d "$userhome" ]; then
 fi
 
 ##
-# Create User
+# Create user
 #
 
 # Create the user and home directory
@@ -35,8 +49,6 @@ echo "$username ALL=(ALL) NOPASSWD:ALL" > "/etc/sudoers.d/$username"
 ##
 # Install Pyenv
 #
-
-pythonver=3.10.6
 
 # Run the bootstrap script
 su -l "$username" -c "curl https://pyenv.run | bash"
